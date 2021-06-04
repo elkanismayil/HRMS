@@ -1,11 +1,11 @@
 package kodlama.io.hrms.api.controllers;
 
 import kodlama.io.hrms.business.abstracts.JobService;
+import kodlama.io.hrms.core.utilities.results.DataResult;
+import kodlama.io.hrms.core.utilities.results.SuccessDataResult;
 import kodlama.io.hrms.entities.concretes.Job;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,10 +20,24 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/get-all")
-    public List<Job> getAll(){
+    @RequestMapping(value = "/get_all", method = RequestMethod.GET)
+    public DataResult<List<Job>> getAll() {
         return this.jobService.getAll();
     }
 
+    @RequestMapping(value = "/get_salary_greater_than", method = RequestMethod.GET)
+    public DataResult<List<Job>> findJobBySalaryGreaterThan(@RequestParam double salary) {
+        return this.jobService.findJobsBySalaryGreaterThan(salary);
+    }
+
+    @RequestMapping(value = "/get_salary_less_than", method = RequestMethod.GET)
+    public DataResult<List<Job>> findJobBySalaryLessThan(@RequestParam double salary) {
+        return this.jobService.findBySalaryLessThan(salary);
+    }
+
+    @RequestMapping(value = "/get_by_name", method = RequestMethod.GET)
+    public Job findByName(@RequestParam String name){
+        return this.jobService.findByName(name);
+    }
 
 }

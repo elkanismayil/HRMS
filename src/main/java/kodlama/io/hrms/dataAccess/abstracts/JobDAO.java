@@ -3,6 +3,12 @@ package kodlama.io.hrms.dataAccess.abstracts;
 import kodlama.io.hrms.entities.concretes.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface JobDAO extends JpaRepository<Job, Integer> {
+import java.util.List;
 
+public interface JobDAO extends JpaRepository<Job, Integer> {
+    Job findByName(String name); // bu çalışmayabilir çalışmazsa findByname(String name) kullan bunun yerine tamam?ok
+
+    List<Job> findBySalaryGreaterThan(double salary);
+
+    List<Job> findBySalaryLessThan(double salary);
 }
