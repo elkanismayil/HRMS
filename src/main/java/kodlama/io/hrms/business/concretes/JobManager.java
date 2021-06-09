@@ -21,6 +21,11 @@ public class JobManager implements JobService {
     }
 
     @Override
+    public Job add(Job job) {
+        return this.jobDAO.save(job);
+    }
+
+    @Override
     public DataResult<List<Job>> getAll() {
         return new SuccessDataResult<>(this.jobDAO.findAll(), "All job listed");
     }
@@ -39,5 +44,10 @@ public class JobManager implements JobService {
     @Override
     public Job findByName(String name) {
         return this.jobDAO.findByName(name);
+    }
+
+    @Override
+    public Job findById(int id) {
+        return this.jobDAO.findById(id);
     }
 }

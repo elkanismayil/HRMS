@@ -6,6 +6,9 @@ import kodlama.io.hrms.entities.concretes.Job;
 import java.util.List;
 
 public interface JobService {
+
+    Job add(Job job);
+
     DataResult<List<Job>> getAll();
 
     DataResult<List<Job>> findJobsBySalaryGreaterThan(double salary);
@@ -13,4 +16,6 @@ public interface JobService {
     DataResult<List<Job>> findBySalaryLessThan(double salary);
 
     Job findByName(String name);
+
+    Job findById(int id);
 }

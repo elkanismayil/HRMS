@@ -6,13 +6,15 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "job_positions")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Job {
+public class Job implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +23,7 @@ public class Job {
 
     @Column(name = "name", unique = true)
     @UniqueElements(message = "This field cannot be repeated")
+    @NotBlank(message = "This field is mandatory")
     private String name;
 
     @Column(name = "salary")

@@ -20,6 +20,11 @@ public class JobController {
         this.jobService = jobService;
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public Job add(@RequestBody Job job){
+        return this.jobService.add(job);
+    }
+
     @RequestMapping(value = "/get_all", method = RequestMethod.GET)
     public DataResult<List<Job>> getAll() {
         return this.jobService.getAll();
@@ -38,6 +43,11 @@ public class JobController {
     @RequestMapping(value = "/get_by_name", method = RequestMethod.GET)
     public Job findByName(@RequestParam String name){
         return this.jobService.findByName(name);
+    }
+
+    @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
+    public Job findById(@RequestParam int id){
+        return this.jobService.findById(id);
     }
 
 }
