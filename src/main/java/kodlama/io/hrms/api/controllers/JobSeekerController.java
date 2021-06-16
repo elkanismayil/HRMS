@@ -1,11 +1,10 @@
 package kodlama.io.hrms.api.controllers;
 
 import kodlama.io.hrms.business.abstracts.JobSeekerService;
+import kodlama.io.hrms.config.PassayPasswordGenerator;
 import kodlama.io.hrms.entities.concretes.JobSeekers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +18,17 @@ public class JobSeekerController {
     @RequestMapping(value = "/get-all", method = RequestMethod.GET)
     public List<JobSeekers> findAll() {
         return this.service.findAll();
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public JobSeekers add(@RequestBody JobSeekers jobSeekers){
+//        jobSeekers.setPassword(PassayPasswordGenerator.generatePassayPassword());
+//        jobSeekers.setPasswordRepeat();
+        return this.service.add(new JobSeekers());
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public JobSeekers updateField(@RequestParam @PathVariable("id") int id, String email, String firstName, String lastName, String identification) {
+        return this.service.updateField(id, email, firstName, lastName, identification);
     }
 }
