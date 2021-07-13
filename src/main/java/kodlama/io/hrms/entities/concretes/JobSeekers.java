@@ -60,4 +60,8 @@ public class JobSeekers implements Serializable {
     @NotNull
     @NonNull
     private String confirmPassword;
+
+    @Column(name = "active")
+//    @NotNull
+    private Boolean isActive;
 }

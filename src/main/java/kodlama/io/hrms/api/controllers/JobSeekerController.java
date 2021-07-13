@@ -1,7 +1,6 @@
 package kodlama.io.hrms.api.controllers;
 
 import kodlama.io.hrms.business.abstracts.JobSeekerService;
-import kodlama.io.hrms.config.PassayPasswordGenerator;
 import kodlama.io.hrms.entities.concretes.JobSeekers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +21,7 @@ public class JobSeekerController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public JobSeekers add(@RequestBody JobSeekers jobSeekers){
-//        jobSeekers.setPassword(PassayPasswordGenerator.generatePassayPassword());
-//        jobSeekers.setPasswordRepeat();
-        return this.service.add(new JobSeekers());
+        return this.service.add(jobSeekers);
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)

@@ -9,13 +9,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "employers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employers {
+public class Employers implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +41,7 @@ public class Employers {
     @NotBlank(message = "Phone number is mandatory")
     @NotNull(message = "Phone number cannot be null value")
     private String phoneNumber;
+
+    @Column(name = "active")
+    private Boolean isActive;
 }
