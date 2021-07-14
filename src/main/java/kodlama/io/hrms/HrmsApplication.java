@@ -17,7 +17,7 @@ public class HrmsApplication implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         logger.debug("Debugging log");
         logger.info("Info log");
         logger.warn("Hey, This is a warning!");

@@ -25,5 +25,6 @@ public class Regions implements Serializable {
     private Integer regionName;
 
     @OneToMany(mappedBy = "regions", fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     private Set<Countries> countries = new HashSet<>();
 }
