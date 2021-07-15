@@ -11,10 +11,6 @@ public interface JobService {
 
     DataResult<List<Job>> getAll();
 
-    DataResult<List<Job>> findJobsBySalaryGreaterThan(double salary);
-
-    DataResult<List<Job>> findBySalaryLessThan(double salary);
-
     Job findByName(String name);
 
     Job findById(int id);

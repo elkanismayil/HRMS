@@ -8,10 +8,6 @@ import java.util.List;
 public interface JobDAO extends JpaRepository<Job, Integer> {
     Job findByName(String name); // bu çalışmayabilir çalışmazsa findByname(String name) kullan bunun yerine tamam?ok
 
-    List<Job> findBySalaryGreaterThan(double salary);
-
-    List<Job> findBySalaryLessThan(double salary);
-
     Job findById(int id);
 
 }

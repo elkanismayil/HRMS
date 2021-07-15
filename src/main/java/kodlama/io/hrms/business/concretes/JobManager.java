@@ -31,17 +31,6 @@ public class JobManager implements JobService {
     }
 
     @Override
-    public DataResult<List<Job>> findJobsBySalaryGreaterThan(double salary) {
-
-        return new SuccessDataResult<>(jobDAO.findBySalaryGreaterThan(salary), "Found");
-    }
-
-    @Override
-    public DataResult<List<Job>> findBySalaryLessThan(double salary) {
-        return new SuccessDataResult<>(jobDAO.findBySalaryLessThan(salary), "Found");
-    }
-
-    @Override
     public Job findByName(String name) {
         return this.jobDAO.findByName(name);
     }

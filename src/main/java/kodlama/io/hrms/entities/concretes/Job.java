@@ -21,12 +21,9 @@ public class Job implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "job_desc", unique = true)
     @UniqueElements(message = "This field cannot be repeated")
     @NotBlank(message = "This field is mandatory")
     private String name;
-
-    @Column(name = "salary")
-    private double salary;
 
 }
