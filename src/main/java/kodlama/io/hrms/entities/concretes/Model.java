@@ -12,12 +12,13 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "model")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorValue("model")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(value = {"model_id", "created_at", "updated_at"}, allowGetters = true)
-@JsonPropertyOrder(value = {"model_id", "created_at", "updated_at"})
 public class Model {
 
     @Id
@@ -28,7 +29,6 @@ public class Model {
     @Column(name = "created_at")
     @CreationTimestamp
     private LocalDateTime createDateTime;
-
 
     @Column(name = "updated_at")
     @UpdateTimestamp

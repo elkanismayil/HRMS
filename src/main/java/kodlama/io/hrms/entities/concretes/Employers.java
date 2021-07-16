@@ -13,15 +13,17 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "employers")
+@DiscriminatorValue("employers")
+@PrimaryKeyJoinColumn(referencedColumnName = "model_id")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employers implements Serializable {
+public class Employers extends Model implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "company_name")
     @UniqueElements(message = "Company name cannot be repeated")
